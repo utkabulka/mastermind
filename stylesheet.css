@@ -1,15 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    color: #e8e8e8;
+    background-color: #0383fc;
+    border-radius: 10px;
+    border: 2px solid #e8e8e8;
+    font-size: 16px;
+    font-weight: 500;
+    width: 150px;
+    height: 50px;
+}
+
+button:hover {
+    background-color: #168eff;
 }
 
 .content {
     display: flex;
     flex-direction: column;
+    background-color: #e8e8e8;
     align-items: center;
-    margin-top: 64px;
+    margin-top: 48px;
+    padding: 32px;
+    border-radius: 20px;
     gap: 16px;
-    width: 600px;
+    width: 300px;
 }
 
 .number-input,
@@ -18,12 +42,35 @@ body {
 }
 
 .number-input {
-    width: 300px;
+    width: 200px;
     text-align: center;
     font-size: 24px;
     border-radius: 20px;
 }
 
-.guess-button {
-    width: 150px;
+.content.guesses {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.guess {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d8d8d8;
+    padding: 16px 32px 16px 32px;
+    border-radius: 20px;
+}
+.guess-number {
+    font-size: 20px;
+    font-weight: 800;
+}
+.guess-matches {
+    font-size: 15px;
+    font-weight: 300;
+    text-align: right;
 }
