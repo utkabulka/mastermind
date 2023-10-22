@@ -51,6 +51,7 @@ button:hover {
 .content.win,
 .content.guesses {
     display: flex;
+    visibility: collapse;
 }
 
 .content.win {

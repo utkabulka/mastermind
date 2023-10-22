@@ -30,6 +30,9 @@ guessButton.onclick = () => {
         }
         
         guesses++;
+        if (guesses > 0) {
+            guessesContainer.style.visibility = 'visible';
+        }
         previousInput = input;
 
         // creating block with try description
