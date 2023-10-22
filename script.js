@@ -34,7 +34,7 @@ guessButton.onclick = () => {
         
         guesses++;
         if (guesses > 0) {
-            guessesContainer.style.visibility = 'visible';
+            guessesContainer.style.display = 'flex';
         }
         previousInput = input;
 
@@ -82,12 +82,12 @@ function createGuess(input, softMatches, hardMatches) {
 function winGame() {
     gameWon = true;
     triesText.textContent = `You got it in ${guesses} tries.`
-    winContainer.style.visibility = 'visible';
+    winContainer.style.display = 'flex';
 }
 
 function resetGame() {
-    winContainer.style.visibility = 'collapse';
-    guessesContainer.style.visibility = 'collapse';
+    winContainer.style.display = 'none';
+    guessesContainer.style.display = 'none';
     guessesContainer.innerHTML = '';
 
     previousInput = "";
