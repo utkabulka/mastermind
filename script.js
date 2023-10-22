@@ -1,8 +1,9 @@
 const numberInput = document.querySelector(".number-input");
 const guessButton = document.querySelector(".guess-button");
+const winContainer = document.querySelector(".content.win");
+const triesText = document.querySelector("#tries");
 const playAgainButton = document.querySelector(".play-again");
 const guessesContainer = document.querySelector(".content.guesses");
-const winContainer = document.querySelector(".content.win");
 
 const numberLength = 4;
 
@@ -80,6 +81,7 @@ function createGuess(input, softMatches, hardMatches) {
 
 function winGame() {
     gameWon = true;
+    triesText.textContent = `You got it in ${guesses} tries.`
     winContainer.style.visibility = 'visible';
 }
 
