@@ -1,6 +1,7 @@
 const numberInput = document.querySelector(".number-input");
-const guessButton = document.querySelector(".guess-button")
-const guessesContainer = document.querySelector(".content.guesses")
+const guessButton = document.querySelector(".guess-button");
+const guessesContainer = document.querySelector(".content.guesses");
+const winContainer = document.querySelector(".content.win");
 
 const numberLength = 4;
 
@@ -11,36 +12,46 @@ generateNumber();
 
 let previousInput = "";
 
+let gameWon = false;
 let guesses = 0;
 
 guessButton.onclick = () => {
     let input = numberInput.value;
-    guesses++;
+    if (gameWon == false) {
+        // validation
+        if (input.length != numberLength) {
+            console.log("Invalid length of the input!");
+            return;
+        }
+        
+        if (input == previousInput) {
+            console.log("Previous input is identical to current one!");
+            return;
+        }
+        
+        guesses++;
+        previousInput = input;
+
+        // creating block with try description
+        let softMatches = 0;
+        let hardMatches = 0;
+        for (let i = 0; i < numberLength; i++) {
+            if (generatedNumber.charAt(i) == input.charAt(i)) {
+                hardMatches++;
+            }
+            else if (generatedNumber.includes(`${input.charAt(i)}`)) {
+                softMatches++;
+            }
+        }
+        console.log(`Guess ${input} against ${generatedNumber}; SM: ${softMatches}; HM: ${hardMatches}`);
+        createGuess(input, softMatches, hardMatches);
+
+        // check if player guessed all numbers
+        if (hardMatches == numberLength) {
+            winGame();
+        }
+    }
     
-    if (input.length != numberLength) {
-        console.log("Invalid length of the input!");
-        return;
-    }
-
-    if (input == previousInput) {
-        console.log("Previous input is identical to current one!");
-        return;
-    }
-
-    previousInput = input;
-
-    let softMatches = 0;
-    let hardMatches = 0;
-    for (let i = 0; i < numberLength; i++) {
-        if (generatedNumber.charAt(i) == input.charAt(i)) {
-            hardMatches++;
-        }
-        else if (generatedNumber.includes(`${input.charAt(i)}`)) {
-            softMatches++;
-        }
-    }
-    console.log(`Guess ${input} against ${generatedNumber}; SM: ${softMatches}; HM: ${hardMatches}`);
-    createGuess(input, softMatches, hardMatches);
 }
 
 function createGuess(input, softMatches, hardMatches) {
@@ -59,6 +70,11 @@ function createGuess(input, softMatches, hardMatches) {
     guessDiv.appendChild(guessMatchesDiv);
 
     guessesContainer.appendChild(guessDiv);
+}
+
+function winGame() {
+    gameWon = true;
+    winContainer.style.visibility = 'visible';
 }
 
 function generateNumber() {
