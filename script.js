@@ -1,5 +1,6 @@
 const numberInput = document.querySelector(".number-input");
 const guessButton = document.querySelector(".guess-button");
+const playAgainButton = document.querySelector(".play-again");
 const guessesContainer = document.querySelector(".content.guesses");
 const winContainer = document.querySelector(".content.win");
 
@@ -8,12 +9,13 @@ const numberLength = 4;
 let generatedNumber;
 
 numberInput.maxlength = numberLength;
-generateNumber();
 
 let previousInput = "";
 
 let gameWon = false;
 let guesses = 0;
+
+resetGame();
 
 guessButton.onclick = () => {
     let input = numberInput.value;
@@ -53,9 +55,10 @@ guessButton.onclick = () => {
         if (hardMatches == numberLength) {
             winGame();
         }
-    }
-    
+    }   
 }
+
+playAgainButton.onclick = () => resetGame();
 
 function createGuess(input, softMatches, hardMatches) {
     let guessDiv = document.createElement('div');
@@ -78,6 +81,17 @@ function createGuess(input, softMatches, hardMatches) {
 function winGame() {
     gameWon = true;
     winContainer.style.visibility = 'visible';
+}
+
+function resetGame() {
+    winContainer.style.visibility = 'collapse';
+    guessesContainer.style.visibility = 'collapse';
+    guessesContainer.innerHTML = '';
+
+    previousInput = "";
+    gameWon = false;
+    guesses = 0;
+    generateNumber();
 }
 
 function generateNumber() {

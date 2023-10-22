@@ -22,6 +22,7 @@ button {
 
 button:hover {
     background-color: #168eff;
+    cursor: pointer;
 }
 
 .content {
@@ -55,8 +56,8 @@ button:hover {
 }
 
 .content.win {
-    background-color: #98ffc7;
-    visibility: collapse;
+    background-color: #c8ffe1;
+    /* visibility: collapse; */
 }
 
 .content.guesses {
