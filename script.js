@@ -11,8 +11,11 @@ generateNumber();
 
 let previousInput = "";
 
+let guesses = 0;
+
 guessButton.onclick = () => {
     let input = numberInput.value;
+    guesses++;
     
     if (input.length != numberLength) {
         console.log("Invalid length of the input!");
@@ -43,6 +46,7 @@ guessButton.onclick = () => {
 function createGuess(input, softMatches, hardMatches) {
     let guessDiv = document.createElement('div');
     guessDiv.classList.add('guess');
+    guessDiv.style.order = -guesses;
 
     let guessNumberDiv = document.createElement('div');
     guessNumberDiv.classList.add('guess-number');
