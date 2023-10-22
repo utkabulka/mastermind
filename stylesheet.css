@@ -20,6 +20,11 @@ button {
     height: 50px;
 }
 
+.title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
 button:hover {
     background-color: #168eff;
     cursor: pointer;
@@ -43,7 +48,7 @@ button:hover {
 }
 
 .number-input {
-    width: 200px;
+    width: 250px;
     text-align: center;
     font-size: 24px;
     border-radius: 20px;
@@ -52,12 +57,13 @@ button:hover {
 .content.win,
 .content.guesses {
     display: flex;
-    visibility: collapse;
+    align-items: center;
+    gap: 4px;
 }
 
 .content.win {
-    background-color: #c8ffe1;
-    /* visibility: collapse; */
+    color: #e8e8e8;
+    background-color: #0383fc;
 }
 
 .content.guesses {
